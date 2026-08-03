@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://news-back-media.github.io/newsbackmedia.JPG">
+<link rel="canonical" href="https://news-back-media.github.io/">
+<meta name="color-scheme" content="light dark">
+<meta name="referrer" content="no-referrer">
+<title>Celah Baru WordPress Memungkinkan Peretas Jalankan Kode Tanpa Login</title>
+<link rel="stylesheet" href="https://news-back-media.github.io/index.css">
+<script src="https://news-back-media.github.io/index.js" defer></script>
+</head>
+
+<body>
+<header>
+
+<div class="header-content">
+<a href="index.html" class="logo">
+<img src="https://i.ibb.co.com/8L8ZvLJT/54425-removebg-preview.png" alt="newsbackmedia">
+</a>
+<div class="header-right">
+<a href="https://news-back-media.github.io/about.html" class="about-btn">
+About
+</a>
+<a href="https://youtube.com/@newsbackmedia"
+   class="youtube"
+   target="_blank"
+   aria-label="YouTube">
+<img src="https://cdn.simpleicons.org/youtube/FFFFFF" alt="YouTube">
+</a>
+</div>
+</div>
+</header>
+
+<section class="category-menu">
+<a href="https://news-back-media.github.io/politik.html">Politik</a>
+<a href="https://news-back-media.github.io/ekonomi.html">Ekonomi</a>
+<a href="https://news-back-media.github.io/teknologi.html">Teknologi</a>
+<a href="https://news-back-media.github.io/keamanan-siber.html">Keamanan Siber</a>
+<a href="https://news-back-media.github.io/olahraga.html">Olahraga</a>
+</section>
+
+<main class="article">
+
+<h1>
+Celah Baru WordPress Memungkinkan Peretas Jalankan Kode Tanpa Login
+</h1>
+
+<div class="date">
+20 Juli 2026
+</div>
+   
+<div class="article-meta">
+<span id="reading-time">⏱️ Dibaca 3 menit</span>
+</div>
+
+<img src="https://i.ibb.co.com/0ygZ6S0M/20260720-123421.jpg" alt="https://i.ibb.co.com/0ygZ6S0M/20260720-123421.jpg" class="article-image">
+
+<p>WordPress merilis pembaruan keamanan darurat setelah ditemukan rantai kerentanan kritis yang memungkinkan <strong>penyerang tanpa autentikasi (unauthenticated)</strong> menjalankan kode berbahaya (Remote Code Execution/RCE) di server. Kerentanan ini berada di inti (core) WordPress sehingga instalasi standar tanpa plugin tambahan pun dapat terdampak jika menggunakan versi yang rentan.</p>
+
+<p>Rantai eksploitasi tersebut dikenal dengan nama <strong>wp2shell</strong> dan sebenarnya merupakan gabungan dari dua kerentanan berbeda. Kerentanan pertama adalah <strong>CVE-2026-63030</strong>, yaitu kelemahan pada mekanisme REST API Batch Endpoint yang memungkinkan permintaan diproses secara tidak semestinya. Kerentanan kedua adalah <strong>CVE-2026-60137</strong>, yaitu SQL Injection pada komponen inti WordPress. Ketika kedua bug ini digabungkan, penyerang dapat meningkatkan serangan dari SQL Injection menjadi eksekusi kode tanpa perlu memiliki akun atau melakukan login.</p>
+
+<p>Kerentanan REST API Batch pertama kali ditemukan oleh <strong>Adam Kues</strong> dari Assetnote (Searchlight Cyber) dan dilaporkan melalui program HackerOne WordPress. Sementara itu, kelemahan SQL Injection dilaporkan secara terpisah oleh peneliti keamanan TF1T, dtro, dan haongo. Setelah pembaruan keamanan dirilis, detail teknis serta proof-of-concept (PoC) eksploitasi mulai dipublikasikan oleh sejumlah peneliti keamanan, termasuk repositori di GitHub.</p>
+
+<p>Tidak semua versi WordPress memiliki tingkat risiko yang sama. SQL Injection telah ada sejak WordPress 6.8, sedangkan bug pada REST API Batch baru muncul mulai versi 6.9. Karena itu, hanya WordPress 6.9 dan yang lebih baru yang dapat dieksploitasi melalui rantai RCE lengkap.</p>
+
+<p><strong>Versi yang terdampak adalah sebagai berikut:</strong></p>
+
+<p>• WordPress 6.8.0 hingga 6.8.5 hanya rentan terhadap SQL Injection dan telah diperbaiki pada versi <strong>6.8.6</strong>.</p>
+
+<p>• WordPress 6.9.0 hingga 6.9.4 rentan terhadap rantai Remote Code Execution (RCE) lengkap dan telah diperbaiki pada versi <strong>6.9.5</strong>.</p>
+
+<p>• WordPress 7.0.0 hingga 7.0.1 juga rentan terhadap rantai RCE dan telah diperbaiki pada versi <strong>7.0.2</strong>.</p>
+
+<p>• WordPress 7.1 Beta 2 telah menyertakan seluruh perbaikan keamanan tersebut.</p>
+
+<p>Menurut WordPress, pembaruan keamanan ini didorong melalui mekanisme pembaruan otomatis untuk banyak instalasi. Namun, administrator tetap disarankan memeriksa langsung versi WordPress yang digunakan karena situs yang menonaktifkan pembaruan otomatis belum tentu menerima patch secara otomatis.</p>
+
+<p>Secara teknis, SQL Injection terjadi pada parameter <strong>author__not_in</strong> di kelas WP_Query. Penyerang dapat mengirimkan tipe data yang tidak sesuai sehingga validasi dilewati dan nilai berbahaya dimasukkan langsung ke dalam kueri basis data. Sementara itu, kelemahan pada endpoint <strong>/wp-json/batch/v1</strong> menyebabkan kesalahan sinkronisasi pemrosesan beberapa sub-permintaan (batch request), sehingga permintaan penyerang dapat dijalankan menggunakan handler yang berbeda dan akhirnya mencapai jalur SQL Injection tanpa autentikasi.</p>
+
+<p>Endpoint Batch REST API sebenarnya telah tersedia sejak WordPress 5.6 pada tahun 2020. Namun, mekanisme yang memungkinkan terjadinya kebingungan rute (route confusion) baru diperkenalkan pada WordPress 6.9 sehingga hanya versi tersebut yang terdampak oleh rantai eksploitasi penuh.</p>
+
+<p>WordPress mengklasifikasikan rantai eksploitasi ini sebagai <strong>kerentanan kritis (Critical)</strong>. Meski demikian, skor CVSS pada salah satu CVE hanya berada pada kategori High karena penilaian resminya lebih berfokus pada dampak akses data dibandingkan kemampuan menjalankan kode secara penuh. Oleh karena itu, para peneliti keamanan menyarankan administrator memperhatikan kedua nomor CVE tersebut secara bersamaan, bukan hanya melihat skor CVSS masing-masing.</p>
+
+<p>Cloudflare juga mengungkapkan bahwa jalur RCE ini hanya berhasil dieksploitasi apabila situs tidak menggunakan <strong>persistent object cache</strong> seperti Redis atau Memcached. Namun, penggunaan Redis maupun Memcached bukanlah solusi keamanan karena hanya memengaruhi salah satu jalur eksploitasi dan tidak menghilangkan risiko SQL Injection yang mendasarinya.</p>
+
+<p>Rapid7 mengonfirmasi bahwa dukungan deteksi untuk InsightVM dan Nexpose akan tersedia mulai 20 Juli 2026. Hingga pertengahan Juli 2026, kerentanan ini juga belum masuk ke dalam katalog <strong>Known Exploited Vulnerabilities (KEV)</strong> milik CISA karena belum terdapat bukti eksploitasi massal yang terverifikasi. Meskipun demikian, publikasi PoC membuat risiko serangan meningkat secara signifikan karena penyerang dapat dengan mudah mereplikasi teknik eksploitasi tersebut.</p>
+
+<p>WordPress merupakan CMS paling populer di dunia dan menurut berbagai laporan industri digunakan oleh sekitar <strong>43% dari seluruh situs web di internet</strong>. Data dari W3Techs menunjukkan WordPress mendominasi pangsa pasar CMS global sehingga setiap kerentanan pada inti WordPress berpotensi berdampak terhadap jutaan situs web di berbagai sektor.</p>
+
+<p>Apabila belum dapat melakukan pembaruan, administrator disarankan menerapkan mitigasi sementara. Beberapa langkah yang direkomendasikan antara lain memblokir endpoint <strong>/wp-json/batch/v1</strong> maupun parameter <strong>rest_route=/batch/v1</strong> melalui Web Application Firewall (WAF), menonaktifkan akses WordPress REST API untuk pengguna anonim apabila memungkinkan, atau menggunakan plugin mitigasi sementara yang disediakan oleh peneliti hingga pembaruan dapat diterapkan. Namun, seluruh langkah tersebut hanya bersifat sementara dan bukan pengganti pembaruan resmi.</p>
+
+<p>Administrator WordPress disarankan segera memperbarui situs ke versi <strong>6.8.6, 6.9.5, atau 7.0.2</strong> (atau versi yang lebih baru), memeriksa log akses terhadap endpoint REST API, serta memantau aktivitas mencurigakan setelah pembaruan dilakukan. Mengingat detail teknis dan proof-of-concept telah dipublikasikan secara luas, peluang terjadinya upaya eksploitasi diperkirakan akan meningkat dalam waktu dekat.</p>
+
+<div class="article-source">
+<strong>Sumber:</strong>
+<a href="https://thehackernews.com/2026/07/new-wp2shell-wordpress-core-flaw-lets.html?m=1" target="_blank">
+The Hacker News
+</a>
+</div>
+
+<hr class="article-divider">
+<div class="tags">
+<a href="#">#wp2shell</a>
+<a href="#">#wordpresscore</a>
+<a href="#">#wordpress</a>
+<a href="#">#vulnerability</a>
+<a href="#">#cybersecuritynews</a>
+</div>
+
+<div class="share-box">
+<h3>Bagikan Berita</h3>
+<div class="share-links">
+<a id="share-whatsapp" target="_blank">
+WhatsApp
+</a>
+<a id="share-telegram" target="_blank">
+Telegram
+</a>
+<a id="share-facebook" target="_blank">
+Facebook
+</a>
+<a id="share-x" target="_blank">
+X
+</a>
+</div>
+</div>
+
+<button id="copyLink" class="copy-link">
+Salin Link Berita
+</button>
+   
+<section class="next-news">
+<h2>Berita Selanjutnya</h2>
+<a href="https://news-back-media.github.io/peretas-bobol-sistem-dukungan-ti-ey-dokumen-penting-berhasil-diunduh.html" target="_blank"
+class="next-card">
+<img src="https://i.ibb.co.com/21FfHNh5/20260720-123107.jpg" alt="https://i.ibb.co.com/21FfHNh5/20260720-123107.jpg">
+<div>
+<h3>
+Peretas Bobol Sistem Dukungan TI EY, Dokumen Penting Berhasil Diunduh
+</h3>
+<p>
+Ernst Young LLP (EY) mengungkap adanya insiden keamanan siber yang
+</p>
+<span>
+Baca Selengkapnya →
+</span>
+</div>
+</a>
+</section>
+   
+</main>
+
+<footer>
+<div class="footer-container">
+<div class="footer-column">
+<h3>News Back Media</h3>
+<p>
+Portal berita independen yang menyajikan informasi terbaru secara ringkas,
+akurat, dan mudah dipahami.
+</p>
+</div>
+<div class="footer-column">
+<h3>Navigasi</h3>
+<a href="https://news-back-media.github.io/" target="_blank">Home</a>
+<a href="https://news-back-media.github.io/about.html" target="_blank">About</a>
+<a href="https://news-back-media.github.io/politik.html" target="_blank">Politik</a>
+<a href="https://news-back-media.github.io/ekonomi.html" target="_blank">Ekonomi</a>
+<a href="https://news-back-media.github.io/teknologi.html" target="_blank">Teknologi</a>
+<a href="https://news-back-media.github.io/keamanan-siber.html" target="_blank">Keamanan Siber</a>
+</div>
+<div class="footer-column">
+<h3>Ikuti Kami</h3>
+<a href="https://youtube.com/@newsbackmedia"
+target="_blank">
+YouTube
+</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>
+© 2026 <strong>News Back Media</strong>.
+Hak Cipta Dilindungi.
+</p>
+<p class="footer-version">
+Version 1.0.0
+</p>
+</div>
+</footer>
+
+<button id="topBtn">
+↑
+</button>
+   
+</body>
+</html>
