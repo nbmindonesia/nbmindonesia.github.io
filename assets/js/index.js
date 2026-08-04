@@ -24,7 +24,7 @@ const loader = document.getElementById("loader");
 if(loader){
 loader.classList.add("hide");
 }
-},1000);
+},500);
 });
 
 //this not private environment 
