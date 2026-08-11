@@ -1063,3 +1063,41 @@ margin:20px 0;
 border-radius:10px;
 object-fit:cover;
 }
+
+.nbm-figure {
+margin: 0 0 20px 0;
+}
+  
+.nbm-article-image {
+width: 100%;
+height: auto;
+display: block;
+}
+  
+.nbm-caption {
+font-family: Arial, sans-serif;
+font-size: 13px;
+line-height: 1.5;
+color: #666;
+margin-top: 8px;
+}
+
+.nbm-bacajuga {
+font-family: Arial, sans-serif;
+font-size: 16px;
+margin: 0;
+}
+  
+.nbm-bacajuga-label {
+color: #000;
+font-weight: 700;
+}
+  
+.nbm-bacajuga-link {
+color: #0066cc;
+text-decoration: none;
+}
+  
+.nbm-bacajuga-link:hover {
+text-decoration: underline;
+}
