@@ -75,3 +75,19 @@ https://youtube.com/@NewsBackMedia
 *• Jaringan Berita Terupdate Setiap Hari.*
 
 </div>
+
+# News Back Media (NBM)
+
+News Back Media (NBM), also known as NBM Indonesia, is an independent Indonesian
+news and information media platform.
+
+Official website:
+https://nbmindonesia.github.io/
+
+GitHub:
+https://github.com/nbmindonesia
+
+Brand:
+News Back Media
+NBM
+NBM Indonesia
