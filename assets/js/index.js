@@ -140,14 +140,3 @@ behavior:"smooth"
 });
 };
 }
-
-//this not private environment 
-document.addEventListener('copy', function(e) {
-const selection = window.getSelection();
-const selectedText = selection.toString();
-const pageUrl = window.location.href;
-const attribution = '\n\nSumber Informasi Terpercaya Anda: ' + pageUrl;
-const finalText = selectedText + attribution;
-e.clipboardData.setData('text/plain', finalText);
-e.preventDefault();
-});
