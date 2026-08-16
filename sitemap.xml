@@ -6,6 +6,10 @@
 </url>
 
 <url>
+    <loc>https://nbmindonesia.github.io/nbm/about/</loc>
+</url>
+    
+<url>
     <loc>https://nbmindonesia.github.io/nbm/about.html</loc>
 </url>
 
@@ -13,6 +17,26 @@
     <loc>https://nbmindonesia.github.io/404.html</loc>
 </url>
 
+<url>
+    <loc>https://nbmindonesia.github.io/blog/politik/</loc>
+</url>
+
+<url>
+    <loc>https://nbmindonesia.github.io/blog/ekonomi/</loc>
+</url>
+
+<url>
+    <loc>https://nbmindonesia.github.io/blog/teknologi/</loc>
+</url>
+
+<url>
+    <loc>https://nbmindonesia.github.io/blog/keamanan-siber/</loc>
+</url>
+
+<url>
+    <loc>https://nbmindonesia.github.io/blog/olahraga/</loc>
+</url>
+    
 <url>
     <loc>https://nbmindonesia.github.io/blog/politik/politik.html</loc>
 </url>
