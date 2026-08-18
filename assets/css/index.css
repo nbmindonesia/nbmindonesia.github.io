@@ -1102,172 +1102,129 @@ text-decoration: none;
 text-decoration: underline;
 }
 
-/* ================================
-   DONATION POPUP NBM
-   ================================ */
-
 .donation-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 20px;
-
-  background: rgba(0, 0, 0, 0.55);
-
-  opacity: 0;
-  visibility: hidden;
-
-  transition:
-    opacity 0.25s ease,
-    visibility 0.25s ease;
+position: fixed;
+inset: 0;
+z-index: 9999;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+background: rgba(0, 0, 0, 0.55);
+opacity: 0;
+visibility: hidden;
+transition:
+opacity 0.25s ease,
+visibility 0.25s ease;
 }
 
 .donation-overlay.show {
-  opacity: 1;
-  visibility: visible;
+opacity: 1;
+visibility: visible;
 }
 
 .donation-box {
-  position: relative;
-
-  width: 100%;
-  max-width: 430px;
-
-  padding: 30px 25px 25px;
-
-  background: #ffffff;
-  color: #111111;
-
-  border-radius: 16px;
-
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
-
-  text-align: center;
-
-  transform: translateY(15px) scale(0.97);
-
-  transition: transform 0.25s ease;
+position: relative;
+width: 100%;
+max-width: 430px;
+padding: 30px 25px 25px;
+background: #ffffff;
+color: #111111;
+border-radius: 16px;
+box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+text-align: center;
+transform: translateY(15px) scale(0.97);
+transition: transform 0.25s ease;
 }
 
 .donation-overlay.show .donation-box {
-  transform: translateY(0) scale(1);
+transform: translateY(0) scale(1);
 }
 
 .donation-close {
-  position: absolute;
-
-  top: 10px;
-  right: 12px;
-
-  width: 34px;
-  height: 34px;
-
-  border: none;
-  border-radius: 50%;
-
-  background: #eeeeee;
-  color: #333333;
-
-  font-size: 25px;
-  line-height: 1;
-
-  cursor: pointer;
+position: absolute;
+top: 10px;
+right: 12px;
+width: 34px;
+height: 34px;
+border: none;
+border-radius: 50%;
+background: #eeeeee;
+color: #333333;
+font-size: 25px;
+line-height: 1;
+cursor: pointer;
 }
 
 .donation-icon {
-  font-size: 38px;
-  margin-bottom: 8px;
+font-size: 38px;
+margin-bottom: 8px;
 }
 
 .donation-box h2 {
-  margin: 5px 0 12px;
-
-  font-size: 24px;
-  font-weight: 700;
+margin: 5px 0 12px;
+font-size: 24px;
+font-weight: 700;
 }
 
 .donation-box p {
-  margin: 0 auto 22px;
-
-  max-width: 360px;
-
-  font-size: 15px;
-  line-height: 1.6;
-
-  color: #555555;
+margin: 0 auto 22px;
+max-width: 360px;
+font-size: 15px;
+line-height: 1.6;
+color: #555555;
 }
 
 .donation-button {
-  display: block;
-
-  width: 100%;
-
-  padding: 13px 18px;
-
-  border-radius: 9px;
-
-  background: #e3262e;
-  color: #ffffff;
-
-  text-decoration: none;
-
-  font-size: 16px;
-  font-weight: 700;
-
-  transition: opacity 0.2s ease;
+display: block;
+width: 100%;
+padding: 13px 18px;
+border-radius: 9px;
+background: #e3262e;
+color: #ffffff;
+text-decoration: none;
+font-size: 16px;
+font-weight: 700;
+transition: opacity 0.2s ease;
 }
 
 .donation-button:hover {
-  opacity: 0.88;
+opacity: 0.88;
 }
 
 .donation-later {
-  margin-top: 13px;
-
-  border: none;
-  background: transparent;
-
-  color: #777777;
-
-  font-size: 14px;
-
-  cursor: pointer;
+margin-top: 13px;
+border: none;
+background: transparent;
+color: #777777;
+font-size: 14px;
+cursor: pointer;
 }
 
 .donation-later:hover {
-  color: #222222;
+color: #222222;
 }
 
-
-/* DARK MODE */
-
 @media (prefers-color-scheme: dark) {
-
-  .donation-box {
-    background: #1e1e1e;
-    color: #ffffff;
+.donation-box {
+background: #1e1e1e;
+color: #ffffff;
   }
 
-  .donation-box p {
-    color: #cccccc;
-  }
+.donation-box p {
+color: #cccccc;
+}
 
-  .donation-close {
-    background: #333333;
-    color: #ffffff;
-  }
+.donation-close {
+background: #333333;
+color: #ffffff;
+}
 
-  .donation-later {
-    color: #aaaaaa;
-  }
+.donation-later {
+color: #aaaaaa;
+}
 
-  .donation-later:hover {
-    color: #ffffff;
-  }
-
+.donation-later:hover {
+ color: #ffffff;
+}
 }
