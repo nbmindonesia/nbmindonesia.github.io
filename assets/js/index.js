@@ -141,120 +141,55 @@ behavior:"smooth"
 };
 }
 
-/* ================================
-   DONATION POPUP NBM
-   Muncul sekali per tab
-   ================================ */
-
+//this not private environment 
 document.addEventListener("DOMContentLoaded", function () {
-
-  const donationPopup =
-    document.getElementById("donation-popup");
-
-  const closeDonation =
-    document.getElementById("close-donation");
-
-  const closeDonationText =
-    document.getElementById("close-donation-text");
-
-  if (!donationPopup) return;
-
-
-  /*
-   * Cek apakah popup sudah pernah
-   * ditampilkan pada tab ini.
-   */
-  const donationShown =
-    sessionStorage.getItem("nbmDonationShown");
-
-
-  /*
-   * Kalau belum pernah muncul,
-   * tampilkan popup.
-   */
-  if (!donationShown) {
-
-    setTimeout(function () {
-
-      donationPopup.classList.add("show");
-
-      sessionStorage.setItem(
-        "nbmDonationShown",
-        "true"
-      );
-
-    }, 800);
-
-  }
-
-
-  /*
-   * Fungsi menutup popup.
-   */
-  function closeDonationPopup() {
-
-    donationPopup.classList.remove("show");
-
-  }
-
-
-  /*
-   * Tombol X
-   */
-  if (closeDonation) {
-
-    closeDonation.addEventListener(
-      "click",
-      closeDonationPopup
-    );
-
-  }
-
-
-  /*
-   * Tombol "Mungkin nanti"
-   */
-  if (closeDonationText) {
-
-    closeDonationText.addEventListener(
-      "click",
-      closeDonationPopup
-    );
-
-  }
-
-
-  /*
-   * Klik area gelap di luar popup
-   */
-  donationPopup.addEventListener(
-    "click",
-    function (event) {
-
-      if (event.target === donationPopup) {
-
-        closeDonationPopup();
-
-      }
-
-    }
-  );
-
-
-  /*
-   * Tombol ESC
-   */
-  document.addEventListener(
-    "keydown",
-    function (event) {
-
-      if (event.key === "Escape") {
-
-        closeDonationPopup();
-
-      }
-
-    }
-  );
-
+const donationPopup =
+document.getElementById("donation-popup");
+const closeDonation =
+document.getElementById("close-donation");
+const closeDonationText =
+document.getElementById("close-donation-text");
+if (!donationPopup) return;
+const donationShown =
+sessionStorage.getItem("nbmDonationShown");
+if (!donationShown) {
+setTimeout(function () {
+donationPopup.classList.add("show");
+sessionStorage.setItem(
+"nbmDonationShown",
+"true"
+);
+}, 800);
+}
+function closeDonationPopup() {
+donationPopup.classList.remove("show");
+}
+if (closeDonation) {
+closeDonation.addEventListener(
+"click",
+closeDonationPopup
+);
+}
+if (closeDonationText) {
+closeDonationText.addEventListener(
+"click",
+closeDonationPopup
+);
+}
+donationPopup.addEventListener(
+"click",
+function (event) {
+if (event.target === donationPopup) {
+closeDonationPopup();
+}
+}
+);
+document.addEventListener(
+"keydown",
+function (event) {
+if (event.key === "Escape") {
+closeDonationPopup();
+}
+}
+);
 });
