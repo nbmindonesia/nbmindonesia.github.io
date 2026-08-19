@@ -1228,3 +1228,29 @@ color: #aaaaaa;
  color: #ffffff;
 }
 }
+
+.donation-link {
+display: block;
+width: 100%;
+box-sizing: border-box;
+margin-top: 12px;
+padding: 12px 18px;
+border-radius: 8px;
+background: #e3262e;
+color: #ffffff;
+text-align: center;
+text-decoration: none;
+font-size: 15px;
+font-weight: 700;
+transition:
+opacity 0.2s ease,
+transform 0.2s ease;
+}
+
+.donation-link:hover {
+opacity: 0.9;
+}
+
+.donation-link:active {
+transform: scale(0.98);
+}
