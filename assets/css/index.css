@@ -1254,3 +1254,16 @@ opacity: 0.9;
 .donation-link:active {
 transform: scale(0.98);
 }
+
+@media (min-width: 769px){ 
+.category-menu{
+justify-content: flex-start !important; 
+flex-wrap: nowrap !important; 
+overflow-x: auto; 
+padding: 10px 20px !important;
+}
+.category-menu a{
+flex: 0 0 auto;
+white-space: nowrap;
+}
+}
