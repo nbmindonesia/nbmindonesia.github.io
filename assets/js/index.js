@@ -31,8 +31,8 @@ loader.classList.add("hide");
 const feedCards = document.querySelectorAll(".feed-card");
 const pagination = document.getElementById("pagination");
 if(feedCards.length > 0 && pagination){
-const perPage = 5;
-const pageLimit = 10;
+const perPage = 10;
+const pageLimit = 5;
 let currentPage = 1;
 function showPage(page){
 currentPage = page;
